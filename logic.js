@@ -1,7 +1,7 @@
 var pos = 0, rendered_Question = 0,user_ans=0,correct=0,var_1=0,var_2=0,var_3=0,var_4 = 0;
 
 var allQuestions = [
-				  {question: "Who is Prime Minister of the United Kingdom?", 
+		  {question: "Who is Prime Minister of the United Kingdom?", 
 choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], 
 correctAnswer:0}, {question: "What is HTML stands for?", 
 choices: ["Hero Towers Mountines Lakes", "How To Make Ladies", "Hyper Text Markup Language", "Hints To Make Layout"], 
