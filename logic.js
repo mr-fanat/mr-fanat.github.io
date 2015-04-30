@@ -5,7 +5,7 @@ var allQuestions = [
 choices: ["David Cameron", "Gordon Brown", "Winston Churchill", "Tony Blair"], 
 correctAnswer:0}, {question: "What is HTML stands for?", 
 choices: ["Hero Towers Mountines Lakes", "How To Make Ladies", "Hyper Text Markup Language", "Hints To Make Layout"], 
-correctAnswer:2}, {question: "What is the capital of German?", 
+correctAnswer:2}, {question: "What is the capital of Germany?", 
 choices: ["Paris", "Amsterdam", "Kiev", "Berlin"], 
 correctAnswer:3}, {question: "What is a process of an official lowering of the exchange value of a country's currency relative to gold or other currencies?", 
 choices: ["Inflation", "Devaluation", "Revaluation", "Default"], 
