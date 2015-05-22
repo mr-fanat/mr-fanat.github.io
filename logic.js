@@ -1,4 +1,5 @@
 var pos = 0, rendered_Question = 0,user_ans=0,correct=0,var_1=0,var_2=0,var_3=0,var_4 = 0;
+var choice = [];
 
 var allQuestions = [
 		  {question: "Who is Prime Minister of the United Kingdom?", 
@@ -36,12 +37,17 @@ function render_question () {
 	var_3=allQuestions[pos].choices[2];
 	var_4=allQuestions[pos].choices[3];
 
+	answers = document.getElementById("active_answers");
 	document.getElementById("active_questions").innerHTML += rendered_Question;
-	document.getElementById("active_answers").innerHTML ="<input type='radio' name='user_ans' value='0'>"+var_1+"<br>";
-	document.getElementById("active_answers").innerHTML +="<input type='radio' name='user_ans' value='1'>"+var_2+"<br>";
-	document.getElementById("active_answers").innerHTML +="<input type='radio' name='user_ans' value='2'>"+var_3+"<br>";
-	document.getElementById("active_answers").innerHTML +="<input type='radio' name='user_ans' value='3'>"+var_4+"<br><br>";
-	document.getElementById("active_answers").innerHTML +="<button onclick='checkAnswer()' >Submit answer</button><br><br>";
+	answers.innerHTML ="<input type='radio' name='user_ans' value='0' id='0'>"+var_1+"<br>";
+	answers.innerHTML +="<input type='radio' name='user_ans' value='1' id='1'>"+var_2+"<br>";
+	answers.innerHTML +="<input type='radio' name='user_ans' value='2' id='2'>"+var_3+"<br>";
+	answers.innerHTML +="<input type='radio' name='user_ans' value='3' id='3'>"+var_4+"<br><br>";
+	answers.innerHTML +="<button onclick='checkAnswer()' >Next</button><br><br>";
+	
+	if (pos>0) {
+	answers.innerHTML +="<button onclick='backButton()' >Back</button><br><br>";
+	}
 	}
 
 function checkAnswer (){
@@ -49,16 +55,46 @@ function checkAnswer (){
 	key_answer=allQuestions[pos].correctAnswer;
 	for(var i=0; i<user_ans.length; i++){
 		if (user_ans[i].checked){
-			choice=user_ans[i].value;
+			choice[pos]=user_ans[i].value;
+
+			console.log(user_ans[i].value);
 		}
-
 	}
-
-	if(choice == key_answer){
+	//validation cycle 
+	//if user choose no one of the a answers display a hint, and stop iteration
+	if (typeof(choice[pos]) == "undefined"){
+		document.getElementById("hint").innerHTML = "Choose one of the radio buttons!";
+		 return false;
+	}
+	//hide a hint if answer was choosen
+		document.getElementById("hint").innerHTML = " ";
+	if(choice[pos] == key_answer){
 		correct++;
 	}
 	 	pos++;
-		render_question();
+		render_question();		
+		for(var i=0;i<user_ans.length;i++){
+		if (user_ans[i].value === choice[pos]){
+		document.getElementById(i).checked =true;
+		}
+		}
+		
+		console.log(choice);
+
+}
+
+function backButton () {
+	pos--;
+	correct--;
+	render_question();
+
+	user_ans = document.getElementsByName("user_ans");
+	for(var i=0;i<user_ans.length;i++){
+		if (user_ans[i].value === choice[pos]){
+			document.getElementById(i).checked =true;
+		}
+	}
+
 }
 
 window.addEventListener("load", render_question, false);
