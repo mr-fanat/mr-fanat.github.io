@@ -21,7 +21,7 @@ function render_question () {
 	if (pos >= allQuestions.length){
 		document.getElementById("header").innerHTML="Congratulations!"
 		document.getElementById("active_questions").innerHTML=
-		"You have "+correct+" correct answers from "+allQuestions.length+" questiuons!";
+		"You have "+correct+" correct answers from "+allQuestions.length+" questions!";
 		document.getElementById("active_answers").innerHTML="Test finished<br><br>";
 		document.getElementById("active_answers").innerHTML +="<button onclick='window.location.reload()'>Try again</button><br>";
 		pos=0;
